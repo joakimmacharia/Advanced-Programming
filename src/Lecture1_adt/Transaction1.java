@@ -8,11 +8,30 @@ import java.util.Calendar;
  * 2. Preservation of Invariants: --- Any external client code can alter the internal values
  */
 public class Transaction1 {
-    public int amount;
-    public Calendar date;
+    // private 
+    private int amount;
+    private Calendar date;
 
     public Transaction1(int amount, Calendar date) {
+       if(amount<0){
+           throw new illegalArgumentException("amount cannot be negative);
+       }
         this.amount = amount;
         this.date = (Calendar) date.clone();
+    }
+    public int getAmount() {
+        return amount;
+}
+    public void setAmount(int amount){
+        if(amount<0){
+            throw new illegalArgumentException("Amount cannot be negative")
+                }
+        this.amount= amount;
+    }
+    public Calender getDate(){
+        return (Calender) date.clone();
+
+        publicvoid setDate( Calender date) {
+            this.date = ( Calender) date.clone();
     }
 }
