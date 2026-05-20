@@ -18,7 +18,10 @@ public class WithdrawalTransaction extends BaseTransaction {
     }
 
     // Method to reverse the transaction
-    public boolean reverse() {
+    public boolean reverse(BankAccountba) {
+        double current_balance = ba.getBalance();
+        double new_balance = current_balance + getAmount();
+        ba.setBalance(new_balance);
         return true;
     } // return true if reversal was successful
 
