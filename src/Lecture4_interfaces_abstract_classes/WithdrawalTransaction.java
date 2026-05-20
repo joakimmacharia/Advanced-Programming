@@ -33,13 +33,26 @@ public class WithdrawalTransaction extends BaseTransaction {
     /*
     Oportunity for assignment: implementing different form of withdrawal
      */
-    public void apply(BankAccount ba) {
-        double curr_balance = ba.getBalance();
-        if (curr_balance > getAmount()) {
-            double new_balance = curr_balance - getAmount();
-            ba.setBalance(new_balance);
-        }
+   public void apply(BankAccount ba) throws InsufficientFundsException {
+
+    double curr_balance = ba.getBalance();
+
+    if (curr_balance >= getAmount()) {
+
+        double new_balance = curr_balance - getAmount();
+
+        ba.setBalance(new_balance);
+
+        System.out.println("Withdrawal Successful");
+        System.out.println("New Balance: " + ba.getBalance());
+
+    } else {
+
+        throw new InsufficientFundsException(
+                "Insufficient funds in account."
+        );
     }
+}
 
     /*
     Assignment 1 Q3: Write the Reverse method - a method unique to the WithdrawalTransaction Class
