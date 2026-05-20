@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Calendar;
 
 public abstract class BaseTransaction implements TransactionInterface {
-    private final int amount;
+    private final double amount;
     private final Calendar date;
     private final String transactionID;
 
@@ -20,7 +20,7 @@ public abstract class BaseTransaction implements TransactionInterface {
     public BaseTransaction(int amount, @NotNull Calendar date)  {
         this.amount = amount;
         this.date = (Calendar) date.clone();
-        int uniq = (int) Math.random()*10000;
+        int uniq = (int) (Math.random()*10000;
         transactionID = date.toString()+uniq;
     }
 
