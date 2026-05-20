@@ -6,20 +6,27 @@ public class Main {
 
     public static void main(String[] args) {
 
-        BankAccount account = new BankAccount(1000);
+        BankAccount ba = new BankAccount(500);
 
-        DepositTransaction deposit =
-                new DepositTransaction(500, Calendar.getInstance());
+        WithdrawalTransaction wt =
+                new WithdrawalTransaction(
+                        1000,
+                        Calendar.getInstance()
+                );
 
-        WithdrawalTransaction withdrawal =
-                new WithdrawalTransaction(300, Calendar.getInstance());
+        // Testing normal apply()
+        try {
 
-        deposit.printTransactionDetails();
-        deposit.apply(account);
+            wt.apply(ba);
+
+        } catch (InsufficientFundsException e) {
+
+            System.out.println(e.getMessage());
+        }
 
         System.out.println();
 
-        withdrawal.printTransactionDetails();
-        withdrawal.apply(account);
+        // Testing overloaded apply()
+        wt.apply(ba, true);
     }
 }
